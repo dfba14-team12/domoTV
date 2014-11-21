@@ -69,9 +69,9 @@ public class MainFragment extends BrowseFragment {
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         mCardPresenter = new CardPresenter();
 
-        int i;
-        for (i = 0; i < NUM_ROWS; i++) {
-            if (i != 0) {
+        int i = 0;
+        //for (i = 0; i < NUM_ROWS; i++) {
+            /*if (i != 0) {
                 Collections.shuffle(list);
             }
             ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
@@ -79,8 +79,36 @@ public class MainFragment extends BrowseFragment {
                 listRowAdapter.add(list.get(j % 5));
             }
             HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
-            mRowsAdapter.add(new ListRow(header, listRowAdapter));
+            mRowsAdapter.add(new ListRow(header, listRowAdapter));*/
+        //}
+
+        // Telecamere
+        ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
+        for (int j = 0; j < NUM_COLS; j++) {
+            listRowAdapter.add(list.get(j % 5));
         }
+        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        mRowsAdapter.add(new ListRow(header, listRowAdapter));
+
+        //Sensori
+
+        //ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
+        for (int j = 0; j < NUM_COLS; j++) {
+            listRowAdapter.add(list.get(j % 5));
+        }
+        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        mRowsAdapter.add(new ListRow(header, listRowAdapter));
+
+        //Luci
+
+        //ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
+        for (int j = 0; j < NUM_COLS; j++) {
+            listRowAdapter.add(list.get(j % 5));
+        }
+        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        mRowsAdapter.add(new ListRow(header, listRowAdapter));
+
+        //Fine Aggiunte
 
         HeaderItem gridHeader = new HeaderItem(i, "PREFERENCES", null);
 
