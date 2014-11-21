@@ -5,12 +5,9 @@ import java.util.List;
 
 public final class MovieList {
     public static final String MOVIE_CATEGORY[] = {
-            "Category Zero",
-            "Category One",
-            "Category Two",
-            "Category Three",
-            "Category Four",
-            "Category Five",
+            "WebCam",
+            "Sensor",
+            "Lights",
     };
 
     public static List<Movie> list;

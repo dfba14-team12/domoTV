@@ -36,8 +36,8 @@ import com.squareup.picasso.Target;
 public class MainFragment extends BrowseFragment {
     private static final String TAG = "MainFragment";
 
-    private static final int NUM_ROWS = 6;
-    private static final int NUM_COLS = 15;
+    private static final int NUM_ROWS = 3;
+    private static final int NUM_COLS = 5;
 
     private ArrayObjectAdapter mRowsAdapter;
     private Drawable mDefaultBackground;
