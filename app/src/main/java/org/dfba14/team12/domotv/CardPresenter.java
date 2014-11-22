@@ -77,7 +77,7 @@ public class CardPresenter extends Presenter {
         Log.d(TAG, "onBindViewHolder");
         if (movie.getCardImageUrl() != null) {
             ((ViewHolder) viewHolder).mCardView.setTitleText(movie.getTitle());
-            ((ViewHolder) viewHolder).mCardView.setContentText(movie.getStudio());
+            ((ViewHolder) viewHolder).mCardView.setContentText(movie.getSubtitle());
             ((ViewHolder) viewHolder).mCardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
             //((ViewHolder) viewHolder).mCardView.setBadgeImage(mContext.getResources().getDrawable(
             //        R.drawable.videos_by_google_icon));

@@ -143,12 +143,18 @@ public class PlayerActivity extends Activity {
         if (null != mControllersTimer) {
             mControllersTimer.cancel();
         }
+
+
         mControllersTimer = new Timer();
         mControllersTimer.schedule(new HideControllersTask(), HIDE_CONTROLLER_TIME);
     }
 
+
+
     private void updateControlersVisibility(boolean show) {
         if (show) {
+
+
             mControllers.setVisibility(View.VISIBLE);
         } else {
             mControllers.setVisibility(View.INVISIBLE);

@@ -53,7 +53,7 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public String getStudio() {
+    public String getSubtitle() {
         return studio;
     }
 

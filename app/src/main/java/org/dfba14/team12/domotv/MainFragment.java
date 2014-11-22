@@ -1,7 +1,6 @@
 package org.dfba14.team12.domotv;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,8 +35,15 @@ import com.squareup.picasso.Target;
 public class MainFragment extends BrowseFragment {
     private static final String TAG = "MainFragment";
 
-    private static final int NUM_ROWS = 3;
-    private static final int NUM_COLS = 5;
+    public static final String CATEGORY[] = {
+            "Cameras",
+            "Sensors",
+            "Lights",
+    };
+
+    private static final int NUM_CAMERAS = 5;
+    private static final int NUM_SENSORS = 3;
+    private static final int NUM_LIGHTS = 8;
 
     private ArrayObjectAdapter mRowsAdapter;
     private Drawable mDefaultBackground;
@@ -64,59 +70,49 @@ public class MainFragment extends BrowseFragment {
     }
 
     private void loadRows() {
-        List<Movie> list = MovieList.setupMovies();
+        List<Movie> lMovie = MovieList.setupMovies();
+    //    List<Sensor> lSensors = SensorList.setupSensors();
+    //    List<Light> lLights = LightList.setupLights();
 
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         mCardPresenter = new CardPresenter();
 
-        int i = 0;
-        //for (i = 0; i < NUM_ROWS; i++) {
-            /*if (i != 0) {
-                Collections.shuffle(list);
-            }
-            ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
-            for (int j = 0; j < NUM_COLS; j++) {
-                listRowAdapter.add(list.get(j % 5));
-            }
-            HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
-            mRowsAdapter.add(new ListRow(header, listRowAdapter));*/
-        //}
-
         // Telecamere
         ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
-        for (int j = 0; j < NUM_COLS; j++) {
-            listRowAdapter.add(list.get(j % 5));
+        for (int j = 0; j < NUM_CAMERAS; j++) {
+            listRowAdapter.add(lMovie.get(j % 5));
         }
-        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        HeaderItem header = new HeaderItem(0, getResources().getString(R.string.category_camera), null);
         mRowsAdapter.add(new ListRow(header, listRowAdapter));
 
         //Sensori
+        /*
+        listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
 
-        //ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
-        for (int j = 0; j < NUM_COLS; j++) {
-            listRowAdapter.add(list.get(j % 5));
+        for (int j = 0; j < NUM_SENSORS; j++) {
+            listRowAdapter.add(lSensors.get(j % 5));
         }
-        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        header = new HeaderItem(1, getResources().getString(R.string.category_sensors), null);
         mRowsAdapter.add(new ListRow(header, listRowAdapter));
-
-        //Luci
-
-        //ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
-        for (int j = 0; j < NUM_COLS; j++) {
-            listRowAdapter.add(list.get(j % 5));
+*/
+         //Luci
+        /*
+        listRowAdapter = new ArrayObjectAdapter(mCardPresenter);
+        for (int j = 0; j < NUM_LIGHTS; j++) {
+            listRowAdapter.add(lLights.get(j % 5));
         }
-        HeaderItem header = new HeaderItem(i, MovieList.MOVIE_CATEGORY[i], null);
+        header = new HeaderItem(1, getResources().getString(R.string.category_lights), null);
         mRowsAdapter.add(new ListRow(header, listRowAdapter));
-
+        */
         //Fine Aggiunte
 
-        HeaderItem gridHeader = new HeaderItem(i, "PREFERENCES", null);
+        HeaderItem gridHeader = new HeaderItem(2, getResources().getString(R.string.category_prefs), null);
 
         GridItemPresenter mGridPresenter = new GridItemPresenter();
         ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
-        gridRowAdapter.add(getResources().getString(R.string.grid_view));
-        gridRowAdapter.add(getResources().getString(R.string.send_feeback));
-        gridRowAdapter.add(getResources().getString(R.string.personal_settings));
+        gridRowAdapter.add(getResources().getString(R.string.cameras));
+        gridRowAdapter.add(getResources().getString(R.string.lights));
+        gridRowAdapter.add(getResources().getString(R.string.sensors));
         mRowsAdapter.add(new ListRow(gridHeader, gridRowAdapter));
 
         setAdapter(mRowsAdapter);
@@ -155,8 +151,8 @@ public class MainFragment extends BrowseFragment {
         setOnSearchClickedListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Implement your own in-app search", Toast.LENGTH_LONG)
-                        .show();
+                Intent intent = new Intent(getActivity(), TVSearchActivity.class);
+                startActivity(intent);
             }
         });
     }
